@@ -40,4 +40,5 @@
     <string name="user_already_exist">用户已存在</string>
     <string name="register_success">注册成功</string>
     <string name="logout_success">退出登录成功</string>
+    <string name="userNameError">用户名不合法</string>
 </resources>

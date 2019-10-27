@@ -1,5 +1,6 @@
 package study.zdf.imdemo
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
@@ -8,11 +9,27 @@ import android.support.v7.app.AppCompatActivity
  * @description:
  * @date :2019/10/27 11:47
  */
-abstract  class BaseActivity:AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
+    val progressDialog by lazy { ProgressDialog(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutResID())
         init()
+    }
+
+    /**
+     * 创建弹出进度条
+     */
+    fun showProgress(message: String) {
+        progressDialog.setMessage(message)
+        progressDialog.show()
+    }
+
+    /**
+     * 关闭进度条dialog显示
+     */
+    fun dismissProgress() {
+        progressDialog.dismiss()
     }
 
     /**
