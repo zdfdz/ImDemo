@@ -33,6 +33,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     private fun login() {
+        hideSoftKeyboard()
         val userName = userName.text.trim().toString()
         val userPwd = password.text.trim().toString()
         mPresenter.login(userName, userPwd)
