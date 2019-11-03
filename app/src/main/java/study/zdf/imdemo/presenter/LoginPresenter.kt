@@ -1,5 +1,6 @@
 package study.zdf.imdemo.presenter
 
+import android.support.v4.app.ActivityCompat
 import com.hyphenate.EMCallBack
 import com.hyphenate.chat.EMClient
 import com.itheima.im.extentions.isValidPassword
@@ -36,6 +37,7 @@ class LoginPresenter(private val view: LoginContract.View) : LoginContract.Prese
             override fun onSuccess() {
                 EMClient.getInstance().groupManager().loadAllGroups()
                 EMClient.getInstance().chatManager().loadAllConversations()
+                //检查是否有数据库读写权限,如果无权限,则不跳转
                 //在子线程中通知view层
                 uiThread { view.onLoggedInSuccess() }
             }
