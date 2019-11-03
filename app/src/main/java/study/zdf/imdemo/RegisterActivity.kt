@@ -3,6 +3,7 @@ package study.zdf.imdemo
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_register.*
 import study.zdf.imdemo.contract.RegisterContract
+import study.zdf.imdemo.presenter.RegisterPresenter
 
 /**
  * @author ZhengDeFeng
@@ -10,6 +11,16 @@ import study.zdf.imdemo.contract.RegisterContract
  * @date :2019/11/3 15:01
  */
 class RegisterActivity : BaseActivity(), RegisterContract.View {
+    private val mPresenter by lazy { RegisterPresenter(this) }
+
+    init {
+        val name = userName.text.trim().toString()
+        val pwd = password.text.trim().toString()
+        val cfpwd = confirmPassword.text.trim().toString()
+
+        mPresenter.register(name, pwd, cfpwd)
+    }
+
     override fun getLayoutResID(): Int {
         return R.layout.activity_register
     }
