@@ -1,13 +1,43 @@
 package study.zdf.imdemo
 
+import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_register.*
+import study.zdf.imdemo.contract.RegisterContract
+
 /**
  * @author ZhengDeFeng
  * @description: 注册界面
  * @date :2019/11/3 15:01
  */
-class RegisterActivity : BaseActivity() {
+class RegisterActivity : BaseActivity(), RegisterContract.View {
     override fun getLayoutResID(): Int {
         return R.layout.activity_register
     }
+
+    override fun onUserNameError() {
+        userName.error = "用户名不正确"
+    }
+
+    override fun onPwdError() {
+        password.error = "密码错误"
+    }
+
+    override fun onConfirmPwdError() {
+        confirmPassword.error = "密码确认有误"
+    }
+
+    override fun onStartRegister() {
+        showProgress("正在注册")
+        finish()
+    }
+
+    override fun onRegisterSuccess() {
+        dismissProgress()
+    }
+
+    override fun onRegisterFailed() {
+        Toast.makeText(this, "注册失败", Toast.LENGTH_LONG).show()
+    }
+
 
 }
