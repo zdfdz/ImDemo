@@ -15,7 +15,9 @@ class RegisterPresenter(val view: RegisterContract.View) : RegisterContract.Pres
         if (userName.isValidUserName()) {
             if (pwd.isValidPassword()) {
                 if (pwd.equals(confirmPwd)) {
+                    //符合登录条件
                     view.onStartRegister()
+                    //实现登录的逻辑
                 } else view.onConfirmPwdError()
             } else view.onPwdError()
         } else view.onUserNameError()

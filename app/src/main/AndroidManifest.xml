@@ -60,6 +60,12 @@
                 <action android:name="android.intent.action.USER_PRESENT"/>
             </intent-filter>
         </receiver>
+
+
+        <provider
+                android:name="cn.bmob.v3.util.BmobContentProvider"
+                android:authorities="study.zdf.imdemo.BmobContentProvider">
+        </provider>
     </application>
 
 </manifest>
