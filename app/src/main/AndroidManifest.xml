@@ -28,18 +28,18 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.activity.MainActivity">
 
         </activity>
-        <activity android:name=".SplashActivity">
+        <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".ui.activity.LoginActivity"></activity>
+        <activity android:name=".ui.activity.RegisterActivity"></activity>
         <!-- 设置环信应用的AppKey -->
         <meta-data android:name="EASEMOB_APPKEY" android:value="1138191027040953#imdemo"/>
         <!-- 声明SDK所需的service SDK核心功能-->

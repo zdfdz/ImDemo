@@ -1,4 +1,4 @@
-package study.zdf.imdemo
+package study.zdf.imdemo.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

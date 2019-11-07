@@ -1,7 +1,8 @@
-package study.zdf.imdemo
+package study.zdf.imdemo.ui.activity
 
 import android.os.Handler
 import org.jetbrains.anko.startActivity
+import study.zdf.imdemo.R
 import study.zdf.imdemo.contract.SplashContract
 import study.zdf.imdemo.presenter.SplashPresenter
 

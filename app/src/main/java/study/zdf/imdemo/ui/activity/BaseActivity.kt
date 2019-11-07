@@ -1,4 +1,4 @@
-package study.zdf.imdemo
+package study.zdf.imdemo.ui.activity
 
 import android.app.ProgressDialog
 import android.content.Context

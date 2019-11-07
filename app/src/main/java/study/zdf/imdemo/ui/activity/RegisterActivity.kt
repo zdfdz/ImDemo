@@ -1,8 +1,8 @@
-package study.zdf.imdemo
+package study.zdf.imdemo.ui.activity
 
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_register.*
-import org.jetbrains.anko.toast
+import study.zdf.imdemo.R
 import study.zdf.imdemo.contract.RegisterContract
 import study.zdf.imdemo.presenter.RegisterPresenter
 

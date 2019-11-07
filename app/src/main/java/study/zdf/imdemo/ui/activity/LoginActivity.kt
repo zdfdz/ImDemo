@@ -1,4 +1,4 @@
-package study.zdf.imdemo
+package study.zdf.imdemo.ui.activity
 
 import android.Manifest
 import android.content.Intent
@@ -10,6 +10,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import study.zdf.imdemo.R
 import study.zdf.imdemo.contract.LoginContract
 import study.zdf.imdemo.presenter.LoginPresenter
 
@@ -46,7 +47,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
      * 新用户注册
      */
     private fun registerNewUser() {
-        val intent = Intent(this,RegisterActivity::class.java)
+        val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
 
