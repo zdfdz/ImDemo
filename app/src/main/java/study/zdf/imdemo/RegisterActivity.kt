@@ -13,12 +13,16 @@ import study.zdf.imdemo.presenter.RegisterPresenter
 class RegisterActivity : BaseActivity(), RegisterContract.View {
     private val mPresenter by lazy { RegisterPresenter(this) }
 
-    init {
-        val name = userName.text.trim().toString()
-        val pwd = password.text.trim().toString()
-        val cfpwd = confirmPassword.text.trim().toString()
+    override fun init() {
+        super.init()
 
-        mPresenter.register(name, pwd, cfpwd)
+        register.setOnClickListener {
+            val name = userName.text.trim().toString()
+            val pwd = password.text.trim().toString()
+            val cfpwd = confirmPassword.text.trim().toString()
+            mPresenter.register(name, pwd, cfpwd)
+        }
+
     }
 
     override fun getLayoutResID(): Int {
@@ -39,7 +43,7 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
 
     override fun onStartRegister() {
         showProgress("正在注册")
-        finish()
+//        finish()
     }
 
     override fun onRegisterSuccess() {
