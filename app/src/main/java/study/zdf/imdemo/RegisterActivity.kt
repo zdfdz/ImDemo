@@ -2,6 +2,7 @@ package study.zdf.imdemo
 
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_register.*
+import org.jetbrains.anko.toast
 import study.zdf.imdemo.contract.RegisterContract
 import study.zdf.imdemo.presenter.RegisterPresenter
 
@@ -11,6 +12,10 @@ import study.zdf.imdemo.presenter.RegisterPresenter
  * @date :2019/11/3 15:01
  */
 class RegisterActivity : BaseActivity(), RegisterContract.View {
+    override fun onUserNameExis() {
+        Toast.makeText(this,"用户名已经存在",Toast.LENGTH_LONG).show()
+    }
+
     private val mPresenter by lazy { RegisterPresenter(this) }
 
     override fun init() {

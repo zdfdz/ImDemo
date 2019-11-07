@@ -47,6 +47,9 @@ class RegisterPresenter(val view: RegisterContract.View) : RegisterContract.Pres
                     registerEaseMob(userName, pwd)
                 } else {
                     // 添加数据失败
+                    if (p1.errorCode==202){
+                        view.onUserNameExis()
+                    }
                 }
             }
         })
