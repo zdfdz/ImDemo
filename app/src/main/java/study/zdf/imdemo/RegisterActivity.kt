@@ -48,6 +48,7 @@ class RegisterActivity : BaseActivity(), RegisterContract.View {
 
     override fun onRegisterSuccess() {
         dismissProgress()
+        finish()
     }
 
     override fun onRegisterFailed() {

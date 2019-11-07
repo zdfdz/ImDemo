@@ -1,13 +1,17 @@
 package study.zdf.imdemo.presenter
 
+import android.security.keystore.UserNotAuthenticatedException
 import android.view.View
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.SaveListener
+import com.hyphenate.chat.EMClient
 import com.itheima.im.extentions.isValidPassword
 import com.itheima.im.extentions.isValidUserName
 import kotlinx.android.synthetic.main.activity_login.view.*
+import org.jetbrains.anko.doAsync
 import study.zdf.imdemo.Bean.loginBean
 import study.zdf.imdemo.contract.RegisterContract
+import java.lang.Exception
 
 /**
  * @author ZhengDeFeng
@@ -34,16 +38,35 @@ class RegisterPresenter(val view: RegisterContract.View) : RegisterContract.Pres
     private fun registerBmob(userName: String, pwd: String) {
         val loginBean = loginBean()
         loginBean.name = userName
-        loginBean.address=pwd
-        loginBean.save(object :SaveListener<String>(){
+        loginBean.address = pwd
+        loginBean.save(object : SaveListener<String>() {
             override fun done(p0: String?, p1: BmobException?) {
-                if (p1==null){
+                if (p1 == null) {
                     //添加数据成功
                     //注册到环信
-                }else {
+                    registerEaseMob(userName, pwd)
+                } else {
                     // 添加数据失败
                 }
             }
         })
+    }
+
+    private fun registerEaseMob(userName: String, pwd: String) {
+        //注册失败会抛出HyphenateException
+        doAsync {
+            try {
+                // 注册成功
+                EMClient.getInstance().createAccount(userName, pwd)//同步方法
+                uiThread { view.onRegisterSuccess() }
+
+            } catch (e: Exception) {
+                //注册失败
+                uiThread {  view.onRegisterFailed() }
+
+            }
+
+        }
+
     }
 }
