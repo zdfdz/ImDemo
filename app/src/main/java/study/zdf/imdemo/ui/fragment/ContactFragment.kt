@@ -1,9 +1,11 @@
 package study.zdf.imdemo.ui.fragment
 
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_contacts.*
 import kotlinx.android.synthetic.main.header.*
 import study.zdf.imdemo.R
+import study.zdf.imdemo.adapter.ContactListAdapter
 
 /**
  * @author ZhengDeFeng
@@ -22,6 +24,13 @@ class ContactFragment : BaseFragment() {
         swipeRefreshLayout.apply {
             setColorSchemeResources(R.color.colorPrimary)
             isRefreshing = true
+        }
+
+        recyclerView.apply {
+            //当确定recyclerView的内部布局大小不会再改变的时候设置为true，会有内部优化
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            adapter=ContactListAdapter()
         }
     }
 }
