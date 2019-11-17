@@ -9,6 +9,7 @@ import org.jetbrains.anko.toast
 import study.zdf.imdemo.R
 import study.zdf.imdemo.adapter.ContactListAdapter
 import study.zdf.imdemo.contract.ContactContract
+import study.zdf.imdemo.presenter.ContactPresenter
 
 /**
  * @author ZhengDeFeng
@@ -16,6 +17,7 @@ import study.zdf.imdemo.contract.ContactContract
  * @date :2019/11/7 23:16
  */
 class ContactFragment : BaseFragment(), ContactContract.View {
+    val mPresenter by lazy { ContactPresenter(this) }
 
     override fun getLayoutResID(): Int {
         return R.layout.fragment_contacts
@@ -28,6 +30,9 @@ class ContactFragment : BaseFragment(), ContactContract.View {
         swipeRefreshLayout.apply {
             setColorSchemeResources(R.color.colorPrimary)
             isRefreshing = true
+            setOnRefreshListener {
+                mPresenter.loadContacts()
+            }
         }
 
         recyclerView.apply {
@@ -36,6 +41,8 @@ class ContactFragment : BaseFragment(), ContactContract.View {
             layoutManager = LinearLayoutManager(context)
             adapter = ContactListAdapter()
         }
+        //加载数据
+        mPresenter.loadContacts()
     }
 
     override fun onLoadContactsSuccess() {
