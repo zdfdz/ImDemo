@@ -39,7 +39,7 @@ class ContactFragment : BaseFragment(), ContactContract.View {
             //当确定recyclerView的内部布局大小不会再改变的时候设置为true，会有内部优化
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-            adapter = ContactListAdapter(mPresenter.contactItemsList)
+            adapter = ContactListAdapter(context,mPresenter.contactItemsList)
         }
         //加载数据
         mPresenter.loadContacts()

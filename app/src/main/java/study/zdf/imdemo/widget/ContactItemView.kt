@@ -13,7 +13,7 @@ import study.zdf.imdemo.R
  * @description:
  * @date :2019/11/16 23:38
  */
-class ContactItemVie :RelativeLayout{
+class ContactItemView :RelativeLayout{
     fun bindView(itemBean: ContactItemBean) {
         firstLetter.text = itemBean.firstLetter.toString()
         userName.text = itemBean.userName

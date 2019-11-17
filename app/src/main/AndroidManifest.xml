@@ -66,6 +66,7 @@
                 android:name="cn.bmob.v3.util.BmobContentProvider"
                 android:authorities="study.zdf.imdemo.BmobContentProvider">
         </provider>
+        <activity android:name=".ui.activity.ChatActivity"></activity>
     </application>
 
 </manifest>
