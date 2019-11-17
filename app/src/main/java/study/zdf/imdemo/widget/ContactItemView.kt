@@ -17,6 +17,13 @@ class ContactItemVie :RelativeLayout{
     fun bindView(itemBean: ContactItemBean) {
         firstLetter.text = itemBean.firstLetter.toString()
         userName.text = itemBean.userName
+        if (itemBean.showFirstLetter){
+            firstLetter.visibility = View.VISIBLE
+        }else
+        {
+            firstLetter.visibility = View.GONE
+        }
+
     }
 
     constructor(context: Context?) : super(context)
