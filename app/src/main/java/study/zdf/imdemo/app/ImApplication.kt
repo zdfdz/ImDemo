@@ -12,9 +12,14 @@ import study.zdf.imdemo.BuildConfig
  * @date :2019/10/27 17:41
  */
 class ImApplication : Application() {
+    companion object {
+        // lateinit 代表创建的时候没有这个对象，需要在后面进行初始化
+        lateinit var instance: ImApplication
+    }
 
     override fun onCreate() {
         super.onCreate()
+        instance = this
         val options = EMOptions();
         // 默认添加好友时，是不需要验证的，改成需要验证
         options.acceptInvitationAlways = false
