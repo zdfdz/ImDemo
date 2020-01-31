@@ -9,7 +9,10 @@ import org.jetbrains.anko.toast
 import study.zdf.imdemo.R
 import study.zdf.imdemo.adapter.ContactListAdapter
 import study.zdf.imdemo.contract.ContactContract
+import study.zdf.imdemo.dagger2.component.DaggerContactFragmentComponent
+import study.zdf.imdemo.dagger2.module.ContactFragmentModule
 import study.zdf.imdemo.presenter.ContactPresenter
+import javax.inject.Inject
 
 /**
  * @author ZhengDeFeng
@@ -17,7 +20,8 @@ import study.zdf.imdemo.presenter.ContactPresenter
  * @date :2019/11/7 23:16
  */
 class ContactFragment : BaseFragment(), ContactContract.View {
-    val mPresenter by lazy { ContactPresenter(this) }
+    @Inject
+    lateinit var mPresenter: ContactPresenter
 
     override fun getLayoutResID(): Int {
         return R.layout.fragment_contacts
@@ -26,7 +30,7 @@ class ContactFragment : BaseFragment(), ContactContract.View {
     override fun init() {
         headerTitle.text = getString(R.string.contact)
         add.visibility = View.VISIBLE
-
+        DaggerContactFragmentComponent.builder().contactFragmentModule(ContactFragmentModule(this)).build().inject(this)
         swipeRefreshLayout.apply {
             setColorSchemeResources(R.color.colorPrimary)
             isRefreshing = true
@@ -39,7 +43,7 @@ class ContactFragment : BaseFragment(), ContactContract.View {
             //当确定recyclerView的内部布局大小不会再改变的时候设置为true，会有内部优化
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-            adapter = ContactListAdapter(context,mPresenter.contactItemsList)
+            adapter = ContactListAdapter(context, mPresenter.contactItemsList)
         }
         //加载数据
         mPresenter.loadContacts()

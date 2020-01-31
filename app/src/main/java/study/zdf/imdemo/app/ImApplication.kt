@@ -1,6 +1,7 @@
 package study.zdf.imdemo.app
 
 import android.app.Application
+import android.support.multidex.MultiDexApplication
 import cn.bmob.v3.Bmob
 import com.hyphenate.chat.EMClient
 import com.hyphenate.chat.EMOptions
@@ -11,7 +12,7 @@ import study.zdf.imdemo.BuildConfig
  * @description:
  * @date :2019/10/27 17:41
  */
-class ImApplication : Application() {
+class ImApplication : MultiDexApplication() {
     companion object {
         // lateinit 代表创建的时候没有这个对象，需要在后面进行初始化
         lateinit var instance: ImApplication
